@@ -7,8 +7,19 @@ import android.content.Context;
 public final class DiracUtils {
 
 public DiracSound mDiracSound;
+public static DiracUtils mInstance;
+public Context mContext;
 
-    public DiracUtils() {
+    public static DiracUtils getInstance() {
+        if (mInstance == null) {
+            throw new IllegalArgumentException("Trying to get instance without initializing!");
+        }
+        return mInstance;
+    }
+
+
+    public DiracUtils(final Context context) {
+    mContext = context;
         mDiracSound = new DiracSound(0, 0);
     }
 
